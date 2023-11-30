@@ -1,0 +1,8 @@
+{
+  "name": "Routinify",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular",
+  "id": "42c8acf7"
+}
