@@ -1,11 +1,9 @@
 :host {
   @apply block;
 
-  .tab {
-    @apply p-4;
-
+  ion-button {
     ion-icon {
-      @apply text-3xl;
+      @apply text-2xl text-white;
     }
   }
 }

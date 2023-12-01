@@ -1,0 +1,24 @@
+<div class="bg-primary flex flex-col gap-8">
+  <div class="p-4">
+    <div class="flex justify-between">
+      <ion-chip routerLink="/tabs/home/settings" class="m-0">
+        <ion-avatar>
+          <img
+            alt="Silhouette of a person's head"
+            src="https://ionicframework.com/docs/img/demos/avatar.svg"
+          />
+        </ion-avatar>
+        <ion-label class="font-bold text-white">{{ username }}</ion-label>
+      </ion-chip>
+      <ion-buttons slot="right" class="gap-2">
+        <ion-button aria-label="notifications">
+          <ion-icon name="notifications-outline" aria-hidden="true"></ion-icon>
+        </ion-button>
+        <ion-button aria-label="help" routerLink="/tabs/home/help">
+          <ion-icon name="help-circle-outline" aria-hidden="true"></ion-icon>
+        </ion-button>
+      </ion-buttons>
+    </div>
+  </div>
+  <app-header-date-selector></app-header-date-selector>
+</div>
