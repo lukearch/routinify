@@ -7,6 +7,7 @@ export type Year = {
   year: number;
   months: {
     month: string;
+    number: number;
     days: {
       day: string;
       short: string;
@@ -74,6 +75,7 @@ export class CalendarService {
 
     return {
       month: monthName,
+      number: Number(month),
       days
     };
   }

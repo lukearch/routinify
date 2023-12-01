@@ -1,22 +1,11 @@
 :host {
-  transition: all 0.2s ease-out;
-
-  .triangle {
-    width: 0;
-    height: 0;
-    border: 7px solid transparent;
-    border-bottom-color: white;
-    position: absolute;
-    bottom: 0;
-    opacity: 0;
-    transition: all 0.2s ease-out;
-  }
+  @apply relative transition-all;
 
   .active {
-    @apply bg-white/20;
+    @apply bg-white;
 
-    .triangle {
-      opacity: 100;
+    span {
+      @apply text-primary;
     }
   }
 }

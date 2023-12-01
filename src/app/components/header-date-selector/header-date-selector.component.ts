@@ -1,12 +1,13 @@
 import { Component, computed, signal } from "@angular/core";
+import { toObservable } from "@angular/core/rxjs-interop";
 import { IonicSlides } from "@ionic/angular";
 import { Store } from "@ngrx/store";
+import moment from "moment";
 import { CalendarService } from "src/app/services/calendar.service";
+import { AppActions } from "src/app/state/actions/app.actions";
 import Swiper from "swiper";
 import { SwiperContainer } from "swiper/element";
 import { FreeMode, Navigation } from "swiper/modules";
-import { toObservable } from "@angular/core/rxjs-interop";
-import { debounceTime } from "rxjs";
 
 @Component({
   selector: "app-header-date-selector",
@@ -23,11 +24,9 @@ export class HeaderDateSelectorComponent {
     () => `${this.activeYear()}-${this.activeMonth() + 1}-${this.activeDay()}`
   );
 
-  onDateChange$ = toObservable(this.date)
-    .pipe(debounceTime(500))
-    .subscribe((date) => {
-      console.log(date);
-    });
+  onDateChange$ = toObservable(this.date).subscribe((date) => {
+    this.store.dispatch(AppActions.selectDate({ date }));
+  });
 
   years = [
     this.calendar.buildYear(this.calendar.currentYear - 1),
@@ -39,6 +38,13 @@ export class HeaderDateSelectorComponent {
     private readonly calendar: CalendarService,
     private store: Store
   ) {}
+
+  isToday(day: number) {
+    return moment(
+      `${this.activeYear()}-${this.activeMonth() + 1}-${day}`,
+      "YYYY-MM-DD"
+    ).isSame(moment().format("YYYY-MM-DD"));
+  }
 
   nextMonth(sc: SwiperContainer) {
     sc.swiper.slideNext(500, true);
@@ -60,8 +66,9 @@ export class HeaderDateSelectorComponent {
     this.activeYear.set(year);
   }
 
-  selectDay(day: number) {
+  selectDay(day: number, days: SwiperContainer) {
     this.activeDay.set(day);
+    days.swiper.slideTo(day - 1);
   }
 
   getYearIndex(year: number) {
@@ -71,5 +78,10 @@ export class HeaderDateSelectorComponent {
   changeSlide(event: Event) {
     const e = event as CustomEvent<[Swiper]>;
     this.activeMonth.set(e.detail[0].activeIndex);
+  }
+
+  changeDaySlide(event: Event) {
+    const e = event as CustomEvent<[Swiper]>;
+    this.activeDay.set(e.detail[0].activeIndex + 1);
   }
 }

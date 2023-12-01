@@ -43,8 +43,29 @@
 
   swiper-container {
     &#days {
+      &::before {
+        @apply w-[50px] absolute top-0 left-0 h-full z-10 bg-gradient-to-r from-primary to-transparent;
+        content: "";
+      }
+
+      &::after {
+        @apply w-[50px] absolute top-0 right-0 h-full z-10 bg-gradient-to-r from-transparent to-primary;
+        content: "";
+      }
+
+      swiper-slide {
+        margin-right: 0 !important;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
       &::part(wrapper) {
-        @apply flex gap-2;
+        @apply flex gap-3 relative;
+      }
+
+      &::part(container) {
+        overflow: visible;
       }
     }
   }

@@ -48,29 +48,55 @@
       </button>
     </div>
   </div>
-  <swiper-container
-    #daysSwiper
-    class="mt-6"
-    id="days"
-    [slidesPerView]="5"
-    [modules]="swiperModules"
-    [freeMode]="true"
-    [centeredSlides]="true"
-    [init]="true"
-    [initialSlide]="activeDay()"
-    [observer]="true"
-  >
-    <swiper-slide
-      class="!w-auto"
-      *ngFor="
-        let day of years[getYearIndex(activeYear())].months[activeMonth()].days
-      "
+  <div class="relative">
+    <swiper-container
+      #days
+      class="mt-12"
+      id="days"
+      [slidesPerView]="'auto'"
+      [modules]="swiperModules"
+      [init]="true"
+      [initialSlide]="activeDay() - 1"
+      [observer]="true"
+      [speed]="500"
+      [centeredSlides]="true"
+      [spaceBetween]="12"
+      (swiperslidechange)="changeDaySlide($event)"
     >
-      <app-day-selector-card
-        [active]="day.number === activeDay()"
-        [day]="day"
-        (click)="selectDay(day.number)"
-      ></app-day-selector-card>
-    </swiper-slide>
-  </swiper-container>
+      <swiper-slide
+        class="!w-auto"
+        *ngFor="
+          let day of years[getYearIndex(activeYear())].months[activeMonth()]
+            .days
+        "
+      >
+        <app-day-selector-card
+          [active]="day.number - 1 === days.swiper.activeIndex"
+          [day]="day"
+          (click)="selectDay(day.number, days)"
+          [isToday]="isToday(day.number)"
+        ></app-day-selector-card>
+      </swiper-slide>
+    </swiper-container>
+    <button
+      *ngIf="canSlidePrev(days)"
+      (click)="prevMonth(days)"
+      class="absolute top-1/2 -translate-y-1/2 left-4 z-10"
+    >
+      <ion-icon
+        icon="chevron-back-outline"
+        class="text-white text-2xl"
+      ></ion-icon>
+    </button>
+    <button
+      *ngIf="canSlideNext(days)"
+      (click)="nextMonth(days)"
+      class="absolute top-1/2 -translate-y-1/2 right-4 z-10"
+    >
+      <ion-icon
+        icon="chevron-forward-outline"
+        class="text-white text-2xl"
+      ></ion-icon>
+    </button>
+  </div>
 </div>

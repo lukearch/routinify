@@ -1,4 +1,5 @@
 import { Component, HostBinding, Input } from "@angular/core";
+import moment from "moment";
 
 @Component({
   selector: "app-day-selector-card",
@@ -7,6 +8,7 @@ import { Component, HostBinding, Input } from "@angular/core";
 })
 export class DaySelectorCardComponent {
   @Input() active = false;
+  @Input() isToday = false;
   @Input({
     required: true
   })

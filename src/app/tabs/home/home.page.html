@@ -1,7 +1,15 @@
+<app-floating-rounded-button
+  routerLink="/tabs/home/create-appointment"
+  icon="add-outline"
+></app-floating-rounded-button>
+
 <ion-content [fullscreen]="true">
   <app-header></app-header>
-  <app-floating-rounded-button
-    routerLink="/tabs/home/create-appointment"
-    icon="add-outline"
-  ></app-floating-rounded-button>
+
+  <main class="flex-1">
+    <h1 class="text-xl font-bold px-4 pt-8">Olá, {{ firstName() }}!</h1>
+    <div class="px-4 mt-4">
+      <h2 class="font-bold">{{fullDate}}</h2>
+    </div>
+  </main>
 </ion-content>
