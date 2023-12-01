@@ -1,9 +1,12 @@
-import { Component, ElementRef, ViewChild, signal } from "@angular/core";
+import { Component, computed, signal } from "@angular/core";
 import { IonicSlides } from "@ionic/angular";
+import { Store } from "@ngrx/store";
 import { CalendarService } from "src/app/services/calendar.service";
 import Swiper from "swiper";
 import { SwiperContainer } from "swiper/element";
 import { FreeMode, Navigation } from "swiper/modules";
+import { toObservable } from "@angular/core/rxjs-interop";
+import { debounceTime } from "rxjs";
 
 @Component({
   selector: "app-header-date-selector",
@@ -16,16 +19,26 @@ export class HeaderDateSelectorComponent {
   activeDay = signal(this.calendar.currentDay);
   swiperModules = [IonicSlides, Navigation, FreeMode];
 
+  date = computed(
+    () => `${this.activeYear()}-${this.activeMonth() + 1}-${this.activeDay()}`
+  );
+
+  onDateChange$ = toObservable(this.date)
+    .pipe(debounceTime(500))
+    .subscribe((date) => {
+      console.log(date);
+    });
+
   years = [
     this.calendar.buildYear(this.calendar.currentYear - 1),
     this.calendar.buildYear(this.calendar.currentYear),
     this.calendar.buildYear(this.calendar.currentYear + 1)
   ];
 
-  @ViewChild("months")
-  private monthsSwiper?: ElementRef<SwiperContainer>;
-
-  constructor(private readonly calendar: CalendarService) {}
+  constructor(
+    private readonly calendar: CalendarService,
+    private store: Store
+  ) {}
 
   nextMonth(sc: SwiperContainer) {
     sc.swiper.slideNext(500, true);

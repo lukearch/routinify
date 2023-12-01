@@ -6,6 +6,10 @@
   }
 
   ion-segment-button {
+    ion-label {
+      @apply text-white/50;
+    }
+
     &.ios {
       &::part(indicator) {
         transition: all 0.2s ease-out;
@@ -27,7 +31,11 @@
 
       &.segment-button-checked {
         &::part(native) {
-          @apply bg-white/20 rounded-md text-white;
+          @apply bg-white/20 rounded-md;
+        }
+
+        ion-label {
+          @apply text-white;
         }
       }
     }

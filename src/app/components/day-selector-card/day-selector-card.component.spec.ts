@@ -1,15 +1,15 @@
-import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
-import { IonicModule } from '@ionic/angular';
+import { ComponentFixture, TestBed, waitForAsync } from "@angular/core/testing";
+import { IonicModule } from "@ionic/angular";
 
-import { DaySelectorCardComponent } from './day-selector-card.component';
+import { DaySelectorCardComponent } from "./day-selector-card.component";
 
-describe('DaySelectorCardComponent', () => {
+describe("DaySelectorCardComponent", () => {
   let component: DaySelectorCardComponent;
   let fixture: ComponentFixture<DaySelectorCardComponent>;
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
-      declarations: [ DaySelectorCardComponent ],
+      declarations: [DaySelectorCardComponent],
       imports: [IonicModule.forRoot()]
     }).compileComponents();
 
@@ -18,7 +18,7 @@ describe('DaySelectorCardComponent', () => {
     fixture.detectChanges();
   }));
 
-  it('should create', () => {
+  it("should create", () => {
     expect(component).toBeTruthy();
   });
 });

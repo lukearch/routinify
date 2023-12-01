@@ -19,6 +19,11 @@ const routes: Routes = [
         path: "settings",
         loadChildren: () =>
           import("./settings/settings.module").then((m) => m.SettingsPageModule)
+      },
+      {
+        path: "create-appointment",
+        loadChildren: () =>
+          import("./settings/settings.module").then((m) => m.SettingsPageModule)
       }
     ]
   },
@@ -26,6 +31,13 @@ const routes: Routes = [
     path: "settings",
     loadChildren: () =>
       import("./settings/settings.module").then((m) => m.SettingsPageModule)
+  },
+  {
+    path: "create-appointment",
+    loadChildren: () =>
+      import("./create-appointment/create-appointment.module").then(
+        (m) => m.CreateAppointmentPageModule
+      )
   }
 ];
 

@@ -1,6 +1,6 @@
 <div class="w-full pb-4">
   <div class="px-4">
-    <ion-segment [swipeGesture]="false" class="mb-6" [value]="activeYear()">
+    <ion-segment [swipeGesture]="false" [value]="activeYear()">
       <ion-segment-button
         *ngFor="let y of years"
         [value]="y.year"
@@ -12,6 +12,7 @@
     <div class="relative">
       <swiper-container
         #months
+        class="mt-6"
         [initialSlide]="activeMonth()"
         (swiperslidechange)="changeSlide($event)"
       >
@@ -19,7 +20,9 @@
           *ngFor="let month of years[getYearIndex(activeYear())].months"
         >
           <swiper-slide>
-            <span class="font-bold text-center block">{{ month.month }}</span>
+            <span class="font-bold text-center block text-white">{{
+              month.month
+            }}</span>
           </swiper-slide>
         </ng-container>
       </swiper-container>

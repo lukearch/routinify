@@ -1,15 +1,15 @@
-import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
-import { IonicModule } from '@ionic/angular';
+import { ComponentFixture, TestBed, waitForAsync } from "@angular/core/testing";
+import { IonicModule } from "@ionic/angular";
 
-import { FloatingRoundedButtonComponent } from './floating-rounded-button.component';
+import { FloatingRoundedButtonComponent } from "./floating-rounded-button.component";
 
-describe('FloatingRoundedButtonComponent', () => {
+describe("FloatingRoundedButtonComponent", () => {
   let component: FloatingRoundedButtonComponent;
   let fixture: ComponentFixture<FloatingRoundedButtonComponent>;
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
-      declarations: [ FloatingRoundedButtonComponent ],
+      declarations: [FloatingRoundedButtonComponent],
       imports: [IonicModule.forRoot()]
     }).compileComponents();
 
@@ -18,7 +18,7 @@ describe('FloatingRoundedButtonComponent', () => {
     fixture.detectChanges();
   }));
 
-  it('should create', () => {
+  it("should create", () => {
     expect(component).toBeTruthy();
   });
 });
