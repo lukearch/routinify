@@ -1,11 +1,11 @@
-import { CapacitorConfig } from '@capacitor/cli';
+import { CapacitorConfig } from "@capacitor/cli";
 
 const config: CapacitorConfig = {
-  appId: 'io.ionic.starter',
-  appName: 'Routinify',
-  webDir: 'www',
+  appId: "com.lucaslarangeira.routinify",
+  appName: "Routinify",
+  webDir: "www",
   server: {
-    androidScheme: 'https'
+    androidScheme: "https"
   }
 };
 

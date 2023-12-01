@@ -1,0 +1,14 @@
+:host {
+  @apply block p-2;
+
+  ion-back-button {
+    &.md {
+      height: 48px;
+      width: 48px;
+
+      &::part(text) {
+        display: none;
+      }
+    }
+  }
+}

@@ -1,0 +1,76 @@
+<div class="w-full pb-4">
+  <div class="px-4">
+    <ion-segment [swipeGesture]="false" [value]="activeYear()">
+      <ion-segment-button
+        *ngFor="let y of years"
+        [value]="y.year"
+        (click)="selectYear(y.year)"
+      >
+        <ion-label>{{ y.year }}</ion-label>
+      </ion-segment-button>
+    </ion-segment>
+    <div class="relative">
+      <swiper-container
+        #months
+        class="mt-6"
+        [initialSlide]="activeMonth()"
+        (swiperslidechange)="changeSlide($event)"
+      >
+        <ng-container
+          *ngFor="let month of years[getYearIndex(activeYear())].months"
+        >
+          <swiper-slide>
+            <span class="font-bold text-center block text-white">{{
+              month.month
+            }}</span>
+          </swiper-slide>
+        </ng-container>
+      </swiper-container>
+      <button
+        *ngIf="canSlidePrev(months)"
+        (click)="prevMonth(months)"
+        class="absolute top-0 left-0 z-10"
+      >
+        <ion-icon
+          icon="chevron-back-outline"
+          class="text-white text-2xl"
+        ></ion-icon>
+      </button>
+      <button
+        *ngIf="canSlideNext(months)"
+        (click)="nextMonth(months)"
+        class="absolute top-0 right-0 z-10"
+      >
+        <ion-icon
+          icon="chevron-forward-outline"
+          class="text-white text-2xl"
+        ></ion-icon>
+      </button>
+    </div>
+  </div>
+  <swiper-container
+    #daysSwiper
+    class="mt-6"
+    id="days"
+    [slidesPerView]="5"
+    [modules]="swiperModules"
+    [freeMode]="true"
+    [centeredSlides]="true"
+    [init]="true"
+    [initialSlide]="activeDay()"
+    [observer]="true"
+  >
+    <swiper-slide
+      class="!w-auto"
+      *ngFor="
+        let day of years[getYearIndex(activeYear())].months[activeMonth()].days
+      "
+    >
+      <app-day-selector-card
+        [active]="day.number === activeDay()"
+        [day]="day"
+        (click)="selectDay(day.number)"
+      ></app-day-selector-card>
+    </swiper-slide>
+  </swiper-container>
+</div>

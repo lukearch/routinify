@@ -3,5 +3,6 @@
     "@ionic/angular/common",
     "@ionic/angular/standalone"
   ],
-  "material-icon-theme.activeIconPack": "angular_ngrx"
+  "material-icon-theme.activeIconPack": "angular_ngrx",
+  "java.configuration.updateBuildConfiguration": "disabled"
 }

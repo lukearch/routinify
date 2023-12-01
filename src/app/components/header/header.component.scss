@@ -1,0 +1,9 @@
+:host {
+  @apply block;
+
+  ion-button {
+    ion-icon {
+      @apply text-2xl text-white;
+    }
+  }
+}

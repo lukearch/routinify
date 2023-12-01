@@ -1,0 +1,51 @@
+:host {
+  @apply block w-full;
+
+  ion-segment {
+    @apply bg-black/10 p-1 rounded-md;
+  }
+
+  ion-segment-button {
+    ion-label {
+      @apply text-white/50;
+    }
+
+    &.ios {
+      &::part(indicator) {
+        transition: all 0.2s ease-out;
+      }
+
+      &::part(indicator-background) {
+        @apply bg-white/20 rounded-md shadow-none transition-all;
+      }
+    }
+
+    &.md {
+      &::part(native) {
+        transition: all 0.2s ease-out;
+      }
+
+      &::part(indicator-background) {
+        @apply hidden;
+      }
+
+      &.segment-button-checked {
+        &::part(native) {
+          @apply bg-white/20 rounded-md;
+        }
+
+        ion-label {
+          @apply text-white;
+        }
+      }
+    }
+  }
+
+  swiper-container {
+    &#days {
+      &::part(wrapper) {
+        @apply flex gap-2;
+      }
+    }
+  }
+}
