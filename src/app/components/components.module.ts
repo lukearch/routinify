@@ -7,6 +7,7 @@ import { DaySelectorCardComponent } from "./day-selector-card/day-selector-card.
 import { FloatingRoundedButtonComponent } from "./floating-rounded-button/floating-rounded-button.component";
 import { HeaderDateSelectorComponent } from "./header-date-selector/header-date-selector.component";
 import { HeaderComponent } from "./header/header.component";
+import { ReminderCardComponent } from "./reminder-card/reminder-card.component";
 
 @NgModule({
   declarations: [
@@ -14,13 +15,15 @@ import { HeaderComponent } from "./header/header.component";
     FloatingRoundedButtonComponent,
     BackButtonComponent,
     HeaderDateSelectorComponent,
-    DaySelectorCardComponent
+    DaySelectorCardComponent,
+    ReminderCardComponent
   ],
   imports: [CommonModule, IonicModule, RouterModule],
   exports: [
     HeaderComponent,
     FloatingRoundedButtonComponent,
-    BackButtonComponent
+    BackButtonComponent,
+    ReminderCardComponent
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
